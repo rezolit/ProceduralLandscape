@@ -8,24 +8,21 @@ public class NoiseMapView : MonoBehaviour
 
 	public void DrawNoiseMap(float[,] noiseMap)
 	{
-		int mapSizeY = noiseMap.GetLength(0);
-		int mapSizeX = noiseMap.GetLength(1);
+		int width = noiseMap.GetLength(0);
+		int height = noiseMap.GetLength(1);
 		
-		print(mapSizeY);
-		print(mapSizeX);
-		
-		Color[] colorMap = new Color[mapSizeY * mapSizeX];
-		for (int y = 0; y < mapSizeY; y++) {
-			for (int x = 0; x < mapSizeX; x++) {
-				colorMap[y + mapSizeX * x] = Color.Lerp(Color.black, Color.white, noiseMap[y, x]);
+		Color[] colorMap = new Color[width * height];
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				colorMap[y * width + x] = Color.Lerp(Color.black, Color.white, noiseMap[x, y]);
 			}
 		}
 
-		Texture2D texture = new Texture2D(mapSizeX, mapSizeY);
+		Texture2D texture = new Texture2D(width, height);
 		texture.SetPixels(colorMap);
 		texture.Apply();
 
 		_textureRenderer.sharedMaterial.mainTexture = texture;
-		_textureRenderer.transform.localScale = new Vector3(mapSizeX, 1, mapSizeY);
+		_textureRenderer.transform.localScale = new Vector3(width, 1, height);
 	}
 }
