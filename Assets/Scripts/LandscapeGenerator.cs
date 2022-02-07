@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class NoiseMapGenerator : MonoBehaviour
+public class LandscapeGenerator : MonoBehaviour
 {
 	[SerializeField]
 	private int _width;
@@ -34,7 +33,7 @@ public class NoiseMapGenerator : MonoBehaviour
 
 	public void GenerateMap()
 	{
-		float[,] noiseMap = NoiseGenerator.GeneratePerlinNoiseGrayscaleMap(
+		float[,] noiseMap = HeightmapGenerator.GenerateHeightmap(
 			_width,
 			_height,
 			_seed,
@@ -44,8 +43,8 @@ public class NoiseMapGenerator : MonoBehaviour
 			_lacunarity,
 			_offset);
 
-		NoiseMapView noiseMapView = GetComponent<NoiseMapView>();
-		noiseMapView.DrawNoiseMap(noiseMap);
+		LandscapeRendering landscapeRendering = GetComponent<LandscapeRendering>();
+		landscapeRendering.DrawNoiseMap(noiseMap);
 	}
 
 	private void OnValidate()
@@ -64,3 +63,7 @@ public class NoiseMapGenerator : MonoBehaviour
 		}
 	}
 }
+
+
+
+

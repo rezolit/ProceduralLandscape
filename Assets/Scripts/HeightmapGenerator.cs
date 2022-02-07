@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public static class NoiseGenerator
+public static class HeightmapGenerator
 {
-	public static float[,] GeneratePerlinNoiseGrayscaleMap(
+	public static float[,] GenerateHeightmap(
 		int width, int height, int seed, float scale, int octavesCount, float persistance, float lacunarity, float offset)
     {
 	    float[,] grayscaleMap = new float[width, height];
