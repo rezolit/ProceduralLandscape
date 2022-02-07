@@ -44,7 +44,7 @@ public class LandscapeGenerator : MonoBehaviour
 			_offset);
 
 		LandscapeRendering landscapeRendering = GetComponent<LandscapeRendering>();
-		landscapeRendering.DrawNoiseMap(noiseMap);
+		landscapeRendering.DrawLandscape(noiseMap);
 	}
 
 	private void OnValidate()

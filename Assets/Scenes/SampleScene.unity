@@ -390,10 +390,91 @@ Transform:
   m_GameObject: {fileID: 2019538105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 62, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalScale: {x: 256, y: 1, z: 256}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2076596023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076596026}
+  - component: {fileID: 2076596025}
+  - component: {fileID: 2076596024}
+  m_Layer: 0
+  m_Name: LandscapeMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &2076596024
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076596023}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 198f91d4ae2ea5e4a92271be290d22ea, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2076596025
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076596023}
+  m_Mesh: {fileID: 0}
+--- !u!4 &2076596026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076596023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2108980409
 GameObject:
@@ -426,17 +507,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textureRenderer: {fileID: 2019538108}
+  _meshFilter: {fileID: 0}
+  _meshRenderer: {fileID: 0}
   _drawMode: 1
   _biomes:
-  - Name: Land
+  - Name: MountainPeak
     Height: 1
-    Color: {r: 0.24857599, g: 0.9245283, b: 0.30265212, a: 0}
-  - Name: Sand
-    Height: 0.5
-    Color: {r: 0.83399194, g: 0.94509804, b: 0.27058828, a: 0}
+    Color: {r: 1, g: 1, b: 1, a: 0}
+  - Name: MountainSnow
+    Height: 0.9
+    Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
+  - Name: Mountain
+    Height: 0.8
+    Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
+  - Name: Rocks
+    Height: 0.7
+    Color: {r: 0.5, g: 0.32328096, b: 0.2476415, a: 0}
   - Name: Water
+    Height: 0.65
+    Color: {r: 0.24705884, g: 0.92549026, b: 0.3019608, a: 0}
+  - Name: Sand
+    Height: 0.45
+    Color: {r: 0.76636446, g: 0.8679245, b: 0.24973297, a: 0}
+  - Name: Shell
     Height: 0.4
     Color: {r: 0.18609825, g: 0.78551584, b: 0.9622642, a: 0}
+  - Name: Water
+    Height: 0.3
+    Color: {r: 0.14901961, g: 0.35427418, b: 0.69803923, a: 0}
+  - Name: Deep Water
+    Height: 0.25
+    Color: {r: 0.0985226, g: 0.28758007, b: 0.509434, a: 0}
 --- !u!114 &2108980411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,14 +550,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b1dfb12d17d546b0137c162b4987b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 100
-  _height: 100
-  _scale: 8
+  _width: 256
+  _height: 256
+  _scale: 50
   _seed: 0
   _offset: 0
   _octavesCount: 4
-  _persistance: 0.495
-  _lacunarity: 1.5
+  _persistance: 0.4
+  _lacunarity: 2
   _autoUpdate: 1
 --- !u!4 &2108980412
 Transform:

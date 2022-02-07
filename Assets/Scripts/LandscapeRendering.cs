@@ -5,6 +5,12 @@ public class LandscapeRendering : MonoBehaviour
 {
 	[SerializeField]
 	private Renderer _textureRenderer;
+	
+	[SerializeField]
+	private MeshFilter _meshFilter;
+	
+	[SerializeField]
+	private MeshRenderer _meshRenderer;
 
 	[SerializeField]
 	private DrawMode _drawMode;
@@ -12,25 +18,46 @@ public class LandscapeRendering : MonoBehaviour
 	[SerializeField]
 	private List<Biome> _biomes; 
 
-	public void DrawNoiseMap(float[,] heightMap)
+	public void DrawLandscape(float[,] heightMap)
 	{
-		Texture2D texture = new Texture2D(heightMap.GetLength(0), heightMap.GetLength(1));
 		switch (_drawMode) {
 			case DrawMode.Grayscale:
-				texture = TextureGenerator.GenerateGrayscaleTextureFromHeightmap(heightMap);
+				DrawGrayscaleTexture(heightMap);
 				break;
 			case DrawMode.Color:
-				texture = TextureGenerator.GenerateColorTextureFromHeightmap(heightMap, _biomes);
+				DrawColorTexture(heightMap);
+				break;
+			case DrawMode.Mesh:
+				DrawMesh(heightMap);
 				break;
 		}
-		
+	}
+
+	private void DrawGrayscaleTexture(float[,] heightMap)
+	{
+		Texture2D texture = TextureGenerator.GenerateGrayscaleTextureFromHeightmap(heightMap);
 		_textureRenderer.sharedMaterial.mainTexture = texture;
 		_textureRenderer.transform.localScale = new Vector3(texture.width, 1, texture.height);
+	}
+
+	private void DrawColorTexture(float[,] heightMap)
+	{
+		Texture2D texture = TextureGenerator.GenerateColorTextureFromHeightmap(heightMap, _biomes);
+		_textureRenderer.sharedMaterial.mainTexture = texture;
+		_textureRenderer.transform.localScale = new Vector3(texture.width, 1, texture.height);
+	}
+
+	private void DrawMesh(float[,] heightMap)
+	{
+		LandscapeMeshData landscapeMeshData = MeshGenerator.GenerateLandscapeMeshFromHeightmap(heightMap);
+		_meshRenderer.sharedMaterial.mainTexture = TextureGenerator.GenerateColorTextureFromHeightmap(heightMap, _biomes);
+		_meshFilter.sharedMesh = landscapeMeshData.CreateMesh();
 	}
 
 	private enum DrawMode
 	{
 		Grayscale,
-		Color
+		Color,
+		Mesh
 	}
 }
